@@ -16,15 +16,12 @@ class FriendLink extends React.Component {
     const intro = info.intro
     return (
       <div className={styles['friend-info-ctn']}>
-        <div className={styles['ava-img-ctn']}>
-          <a href={link} target="_blank">
-            <img className={styles['ava-img']} src={avatarSrc} alt={name} />
-          </a>
-        </div>
-        <div className={styles['intro-ctn']}>
+        <a href={link}>
+          <img className={styles['ava-img']} src={avatarSrc} alt={name} />
           <p className={styles['intro-name']}>{name}</p>
           <p className={styles['intro-info']}>{intro}</p>
-        </div>
+        </a>
+
       </div>
     )
   }

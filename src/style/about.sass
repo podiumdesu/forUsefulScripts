@@ -1,13 +1,146 @@
-.ava-img-ctn
-  display: inline-block
-  .ava-img
-    height: 3rem
+@media (min-width: 400px) and (max-width: 767px)
+  $friend-ctn-margin: 2rem
+  $img-ctn-width: 6rem
+  .friends-link
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    padding: 0 $friend-ctn-margin 0 $friend-ctn-margin
+    
+    .friend-info-ctn
+      width: 100%
+      a
+        height: $img-ctn-width
+        display: block
+        position: relative
+        padding: 0 10px 0 $img-ctn-width
+        text-decoration: none
+        transition: background-color linear
+        border-radius: 10px
+        &:hover
+          background-color: rgba(0,0,0,0.1)
+          .ava-img
+            box-shadow: 2px 2px 20px green
+            transform: rotate(360deg)
 
-.intro-ctn
-  display: inline-block
+        .ava-img
+          display: block
+          height: $img-ctn-width / 1.5 
+          border-radius: 50%
+          box-shadow: 1px 1px 5px green
+          transition: transform 2s
+          position: absolute
+          left: $img-ctn-width / 1.5 / 4
+          top: $img-ctn-width / 1.5 / 4
+          &:hover
+            box-shadow: 1px 1px 10px yellow
 
-.friends-link
-  display: flex
-  flex-wrap: wrap
-  justify-content: center
-  align-items: center
+      p
+        margin: 0 0 0 $img-ctn-width / 8
+        color: black
+        &.intro-name
+          padding-top: $img-ctn-width / 6
+          font-weight: 500
+          font-size: 1.2rem
+        &.intro-info
+          margin-top: $img-ctn-width / 8
+  
+@media (min-width: 768px) and (max-width: 1199px)
+  $friend-ctn-margin: 2rem
+  $img-ctn-width: 6rem
+  .friends-link
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    padding: 0 $friend-ctn-margin 0 $friend-ctn-margin
+    
+    .friend-info-ctn
+      width: 50%
+      a
+        height: $img-ctn-width
+        display: block
+        position: relative
+        padding: 0 10px 0 $img-ctn-width
+        text-decoration: none
+        transition: background-color linear
+        border-radius: 10px
+        &:hover
+          background-color: rgba(0,0,0,0.1)
+          .ava-img
+            box-shadow: 2px 2px 20px green
+            transform: rotate(360deg)
+
+        .ava-img
+          display: block
+          height: $img-ctn-width / 1.5 
+          border-radius: 50%
+          box-shadow: 1px 1px 5px green
+          transition: transform 2s
+          position: absolute
+          left: $img-ctn-width / 1.5 / 4
+          top: $img-ctn-width / 1.5 / 4
+          &:hover
+            box-shadow: 1px 1px 10px yellow
+
+      p
+        margin: 0 0 0 $img-ctn-width / 8
+        color: black
+        &.intro-name
+          padding-top: $img-ctn-width / 6
+          font-weight: 500
+          font-size: 1.2rem
+        &.intro-info
+          margin-top: $img-ctn-width / 8
+  
+@media (min-width: 1200px)
+  $friend-ctn-margin: 5rem
+  $img-ctn-width: 8rem
+  .about-page
+    padding-top: $friend-ctn-margin
+    margin-left: $friend-ctn-margin * 1.5
+    h3
+      margin: 0
+
+  .friends-link
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    padding: 0 $friend-ctn-margin 0 0
+    
+    .friend-info-ctn
+      width: 50%
+      a
+        height: $img-ctn-width
+        display: block
+        position: relative
+        padding: 0 10px 0 $img-ctn-width
+        text-decoration: none
+        transition: background-color linear
+        border-radius: 10px
+        &:hover
+          background-color: rgba(0,0,0,0.1)
+          .ava-img
+            box-shadow: 2px 2px 20px green
+            transform: rotate(360deg)
+
+        .ava-img
+          display: block
+          height: $img-ctn-width / 1.5 
+          border-radius: 50%
+          box-shadow: 1px 1px 5px green
+          transition: transform 2s
+          position: absolute
+          left: $img-ctn-width / 1.5 / 4
+          top: $img-ctn-width / 1.5 / 4
+          &:hover
+            box-shadow: 1px 1px 10px yellow
+
+      p
+        margin: 0 0 0 $img-ctn-width / 8
+        color: black
+        &.intro-name
+          padding-top: $img-ctn-width / 6
+          font-weight: 500
+          font-size: 1.2rem
+        &.intro-info
+          margin-top: $img-ctn-width / 8
