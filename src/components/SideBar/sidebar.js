@@ -8,7 +8,7 @@ class SideBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isClick: false,
+      // isClick: false,
       text: this.props.text,
     }
     this.handleClick = this.handleClick.bind(this)
