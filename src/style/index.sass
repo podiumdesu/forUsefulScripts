@@ -1,3 +1,4 @@
+@import './share.sass'
 body
   margin: 0
   padding: 0
@@ -9,6 +10,29 @@ body
   height: 100%
 
 .right-board
-  left: 20%
-  width: 80%
+  left: 15%
+  width: 85%
+  min-height: 100%
+  box-sizing: border-box
+  position: absolute
+  background-color: #eaeaea
+
+footer
+  text-align: center
+  margin-bottom: 1rem
   position: relative
+  bottom: 0
+  p
+    margin: 0
+    letter-spacing: .1rem
+    color: rgba(0,0,0,.4)
+    .love
+      display: inline-block
+      color: lightcoral
+      animation: change 2s infinite ease-in-out
+    a
+      text-decoration: none
+      color: inherit
+      font-size: .8rem
+
+    

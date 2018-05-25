@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
-//
-// import { Icon } from 'antd'
-// import 'antd/dist/antd.css'
+
 import styles from '../../style/SideBar/index.sass'
 // import '../../style/index.sass'
 
@@ -31,21 +29,25 @@ class SideBar extends Component {
     })
   }
   render() {
-    const { isTitle } = this.props
+    const { isTitle, id } = this.props
     const text = this.state.text
-    const isClick = this.state.isClick
+    const index = 99 - id
+    // const isClick = this.state.isClick
     const classNames = [styles.sidebar]
     if (isTitle) {
       classNames.push(styles.title)
     }
-    if (isClick) {
-      classNames.push(styles.title)
+    if (id % 2) {
+      classNames.push(styles.oddSideBar)
     }
+    // if (isClick) {
+    //   classNames.push(styles.title)
+    // }
     return (
       <div className={classNames.join(' ')}
+        style={{ zIndex: index }}
         onClick={this.handleClick}
       >
-
         <p>{text}</p>
       </div>
     )
