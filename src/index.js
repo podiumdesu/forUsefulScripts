@@ -25,7 +25,7 @@ const Ct = () => {
           <Route path="/map" component={Map} />
           <Route path="/about" component={About} />
           <footer>
-            <p>© 2018 <span className={styles['love']}>❤</span> PetnaKanojo</p>
+            <p>© 2018 <span className={styles.love}>❤</span> PetnaKanojo</p>
             <p><a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action;jsessionid=fMSSEhgInrHRa0wGyk1ENyKM1AAMiqdGE85oxCUnkJiFnGDhM7ds!-2113647171">沪ICP备17003868号-1</a></p>
 
           </footer>

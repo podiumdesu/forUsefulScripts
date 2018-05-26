@@ -3,6 +3,9 @@ import React, { Component } from 'react'
 
 import styles from '../../style/SideBar/index.sass'
 // import '../../style/index.sass'
+import mapSvg from '../../static/2.svg'
+import calenderSvg from '../../static/1.svg'
+import aboutSvg from '../../static/about.svg'
 
 class SideBar extends Component {
   constructor(props) {
@@ -13,12 +16,6 @@ class SideBar extends Component {
     }
     this.handleClick = this.handleClick.bind(this)
   }
-  // static propTypes = {
-  //   color: PropTypes.string,
-  // }
-  // defaultProps = {
-  //   color: 'red',
-  // }
   handleClick() {
     // this.setState(prevState => ({
     //   isClick: !prevState.isClick,
@@ -29,7 +26,12 @@ class SideBar extends Component {
     })
   }
   render() {
-    const { isTitle, id } = this.props
+    const { isTitle, id, isHide } = this.props
+    const svgMap = {
+      1: mapSvg,
+      2: calenderSvg,
+      3: aboutSvg,
+    }
     const text = this.state.text
     const index = 99 - id
     // const isClick = this.state.isClick
@@ -43,12 +45,23 @@ class SideBar extends Component {
     // if (isClick) {
     //   classNames.push(styles.title)
     // }
+    // display: isHide ? 'none' : 'block'
+    // display: isHide ? 'none' : 'block',
     return (
       <div className={classNames.join(' ')}
         style={{ zIndex: index }}
         onClick={this.handleClick}
       >
-        <p>{text}</p>
+        <p
+          ref={c => this.clickToToggle = c}
+          style={{
+            display: isHide ? 'none' : ' ',
+            opacity: isHide ? '0' : '1',
+            transition: 'all linear 1s',
+          }}
+        >{text}
+        </p>
+        <img className={styles.sideBarImg} src={svgMap[id]} alt="" />
       </div>
     )
   }
