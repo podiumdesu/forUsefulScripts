@@ -1,4 +1,4 @@
-export default function (names, newClass) {
-  names.push(newClass)
-  return names.join(' ')
+export default function () {
+  const classArray = [...arguments]
+  return classArray.join(' ')
 }
