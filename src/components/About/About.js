@@ -66,7 +66,6 @@ const About = () => {
       <br />
       <h3>联系我</h3>
       <p><a href="mailto:wwhmomo@gmail.com">邮箱：wwhmomo@gmail.com</a></p>
-      <p></p>
       <br />
       <h3>友链</h3>
       <p>这是我的一些朋友们，都是非常可爱而且优秀的人哦～</p>

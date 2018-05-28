@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from '../../style/LeftBoard/index.sass'
 import rightBoard from '../../style/index.sass'
-import joinClass from '../../components/share/joinClassName'
+import joinClass from '../../components/share/pushClassName'
 import removeClass from '../../components/share/removeClassName'
 import SideBar from '../../components/SideBar/index.js'
 import openIconStyle from '../../static/clickOpen.svg'
@@ -37,7 +37,7 @@ class LeftBoard extends React.Component {
       this.clickToHide.nextElementSibling.className = joinClass(leftBoardToHideClass, styles.newgg)
       iconSrc = openIconStyle
     }
-    console.log(this.state.isHide)
+    // console.log(this.state.isHide)
     this.setState(prevState => ({
       isHide: !prevState.isHide,
       iconStyle: iconSrc,
