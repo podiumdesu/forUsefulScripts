@@ -1,12 +1,13 @@
 export default function (path, method, data) {
-  const ajax = new XMLHttpRequest()
-  ajax.open(method, path, true)
-  ajax.setRequestHeader('Content-type', 'application/json')
-  ajax.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      console.log(this.responseText)
-      return this.responseText
+  return new Promise((resolve, reject) => {
+    const ajax = new XMLHttpRequest()
+    ajax.open(method, path, true)
+    // ajax.setRequestHeader(requestHeader.header, requestHeader.type)
+    ajax.onreadystatechange = function () {
+      if (this.readyState === 4) {
+        resolve(this.responseText)
+      }
     }
-  }
-  ajax.send(JSON.stringify(data))
+    ajax.send(data)
+  })
 }
