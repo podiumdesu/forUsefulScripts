@@ -2,7 +2,6 @@ import React from 'react'
 /* import PropTypes from 'prop-types' */
 import { Link } from 'react-router-dom'
 import styles from '../../style/LeftBoard/index.sass'
-import rightBoard from '../../style/index.sass'
 import joinClass from '../../components/share/pushClassName'
 import removeClass from '../../components/share/removeClassName'
 import SideBar from '../../components/SideBar/index.js'
