@@ -1,9 +1,38 @@
 @import '../share.sass'
+$dragContainerHeight: 10rem
 .contact-page
   text-align: center
-.clickToDownload
-  background: red
-  width: 40%
-  height: 1rem
-  margin: 0 auto
-  cursor: pointer
+
+  .dragFile
+    width: 60%
+    margin: 0 auto
+    height: $dragContainerHeight
+    border-radius: 10px
+    border-width: 1px
+    border-style: dotted
+    // border-image: linear-gradient(to left, #79F1A4, #0E5CAD) 1 round
+    text-align: center
+    p
+      margin: 0
+      line-height: $dragContainerHeight
+  input
+    margin-top: 1rem
+    
+  .clickToDownload
+    margin: 0 auto
+    padding: 10px 0
+    width: 5rem
+    cursor: pointer
+    border-radius: 10px
+    p
+      background: grey
+      margin: 0
+      line-height: 2rem
+      font-size: .5rem
+      color: white
+      text-align: center
+      border-radius: 10px
+    a
+      height: 100%
+      text-decoration: none
+

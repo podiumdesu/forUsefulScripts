@@ -11,25 +11,41 @@ const contactIntro = {
   pageImg: contactImg,
 }
 
-function dragOver(e) {
-  e.preventDefault()
-  console.log('dragOver')
-}
 
 class Contact extends React.Component {
   constructor(props) {
     super(props)
     this.dragFile = this.dragFile.bind(this)
-    // this.dragOver = this.dragOver.bind(this)
+    this.dragOver = this.dragOver.bind(this)
+    this.dragLeave = this.dragLeave.bind(this)
+    this.clickToDownloadFile = this.clickToDownloadFile.bind(this)
     this.state = {
       resultFileName: '',
       processState: false,
+      formData: '',
+      upLoadState: false,
     }
   }
   clickToDownloadFile() {
     if (this.state.processState) {
       this.clickToDownloadVCF.download = 'result.vcf'
       this.clickToDownloadVCF.href = `http://localhost:8080${this.state.resultFileName}`
+    }
+    if (this.state.formData !== '') {
+      this.state.formData.append('saveParent', this.fatherOrNot.checked)
+      ajaxRequest('http://localhost:8080/map/console', 'POST', this.state.formData)
+        .then((resultFileFromServer) => {
+          this.setState({
+            resultFileName: JSON.parse(resultFileFromServer).result,
+            processState: true,
+          })
+          this.resolveInfo.innerHTML = '处理成功，点击下载文件'
+          this.clickToDownloadVCF.children[0].style.backgroundImage = 'linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)'
+          this.clickToDownloadVCF.children[0].children[0].href = `http://localhost:8080/${this.state.resultFileName}`
+          this.clickToDownloadVCF.children[0].children[0].download = 'result.vcf'
+          console.log('gg')
+          this.buttonInfo.innerHTML = '点击下载'
+        })
     }
   }
   dragFile(e) {
@@ -42,25 +58,29 @@ class Contact extends React.Component {
     if (fileSuffix.last() === 'csv') {
       const formData = new FormData()
       formData.append('file', uploadFile)
-      formData.append('saveParent', this.fatherOrNot.checked)
-      ajaxRequest('http://localhost:8080/map/console', 'POST', formData)
-        .then((resultFileFromServer) => {
-          this.setState({
-            resultFileName: JSON.parse(resultFileFromServer).result,
-            processState: true,
-          })
-          this.clickToDownloadVCF.children[0].style.backgroundImage = 'linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)'
-          const addLink = document.createElement('a')
-          this.clickToDownloadVCF.children[0].append(addLink)
-          this.clickToDownloadVCF.children[0].children[0].href = `http://localhost:8080/${this.state.resultFileName}`
-          this.clickToDownloadVCF.children[0].children[0].download = 'result.vcf'
-        })
+      this.state.formData = formData
+      console.log(formData)
+      this.dragOverContainer.children[0].innerHTML = uploadFile.name
+      this.clickToDownloadVCF.children[0].style.backgroundImage = 'linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)'
     } else if (fileSuffix.last() === 'xlsx') {
-      alert('请将xlsx转成csv文件后再上传！')
+      alert('请将xlsx转成csv文件后再上传！\n\n转换教程 https://jingyan.baidu.com/article/925f8cb8a34a15c0dde056e6.html')
     } else {
       alert('请上传csv文件！')
     }
+    this.dragOverContainer.style.borderImage = 'none'
     console.log(e.dataTransfer.files[0].name.split('.'))
+  }
+  dragOver(e) {
+    e.preventDefault()
+    this.dragOverContainer.style.borderImage = 'linear-gradient(to left, #79F1A4, #0E5CAD) 1 round'
+    // console.log('drag')
+  }
+  dragLeave(e) {
+    e.preventDefault()
+    this.dragOverContainer.style.background = 'transparent'
+    console.log(this.dragOverContainer.style)
+    this.dragOverContainer.style.borderImage = 'none'
+    console.log('over')
   }
 
   render() {
@@ -69,16 +89,19 @@ class Contact extends React.Component {
         <PageIntro pageInfo={contactIntro} />
         <p>这里应该是一段很多很多的介绍嗷～</p>
         <p>请按照顺序填写表格</p>
-        <div className={cls.dragFile} onDrop={this.dragFile} onDragOver={dragOver} />
-        <div>
-          {/* <input type="file" id="inputCSV" accept=".csv" onChange={this.handleFileUpload} /> */}
-          <label htmlFor="fatherOrNot" >
-            <input id="fatherOrNot" type="checkbox" ref={(c) => { this.fatherOrNot = c }} />
-              是否保存父母联系方式
-          </label>
+        <div ref={(c) => { this.dragOverContainer = c }} className={cls.dragFile} onDrop={this.dragFile} onDragOver={this.dragOver} onDragLeave={this.dragLeave}>
+          <p>拖拽csv文件至此！</p>
         </div>
-        <div ref={(c) => { this.clickToDownloadVCF = c }} className={cls.clickToDownload}>
-          <p><a style={{ style: '10px', color: 'white' }}>点击下载</a></p>
+        {/* <div> */}
+        {/* <input type="file" id="inputCSV" accept=".csv" onChange={this.handleFileUpload} /> */}
+        <label htmlFor="fatherOrNot" >
+          <input id="fatherOrNot" type="checkbox" ref={(c) => { this.fatherOrNot = c }} />
+              是否保存父母联系方式
+        </label>
+        {/* </div> */}
+        <p ref={(c) => { this.resolveInfo = c }} />
+        <div ref={(c) => { this.clickToDownloadVCF = c }} className={cls.clickToDownload} onClick={this.clickToDownloadFile}>
+          <p><a style={{ padding: '10px', color: 'white' }} ref={(c) => { this.buttonInfo = c }}>点击处理</a></p>
         </div>
       </div>
     )
