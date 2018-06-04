@@ -10,12 +10,12 @@ import { Link } from 'react-router-dom'
 // export default
 
 import Leftboard from './LeftBoard/index'
-import '../style/index.sass'
+import cls from '../style/share.sass'
 
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className = {cls['right-page']} >
         <div>hello, lhx</div>
         <div>yes, done</div>
         <div>
