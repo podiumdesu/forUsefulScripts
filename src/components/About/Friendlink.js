@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styles from '../../style/about.sass'
 
 class FriendLink extends React.Component {

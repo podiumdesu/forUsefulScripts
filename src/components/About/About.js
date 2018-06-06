@@ -2,14 +2,14 @@ import React from 'react'
 
 import FriendLink from './Friendlink'
 // import avatar
-import avaPetnaKanojo from '../../static/avatar/PetnaKanojo.jpg'
+
 import avaVer217 from '../../static/avatar/ver217.png'
 import avatyfsnake from '../../static/avatar/alexanderinhustpic.jpg'
 import avaviseator from '../../static/avatar/viseator.jpg'
 import avaimzhwk from '../../static/avatar/imzhwk.jpg'
 import avaduskdragon from '../../static/avatar/duskdragonpic.jpg'
 import avakylerky from '../../static/avatar/kylerky.jpg'
-
+import avafaraway from '../../static/avatar/faraway.jpg'
 import styles from '../../style/about.sass'
 
 const Ver217 = {
@@ -49,6 +49,12 @@ const kylerky = {
   avatar: avakylerky,
   intro: '曾经是机器学习选手～',
 }
+const faraway = {
+  name: 'faraway',
+  link: 'https://farawaaay.github.io',
+  avatar: avafaraway,
+  intro: '前端开发/腾讯实习生/（个人描述）菜得不知道怎么形容',
+}
 
 const About = () => {
   return (
@@ -65,6 +71,7 @@ const About = () => {
       <p style={{ color: 'white' }}>还有个等我月薪百万来养活的猪猪</p>
       <br />
       <h3>联系我</h3>
+      <p>对于「小工具」的使用遇到了问题可以随时联系我</p>
       <p><a href="mailto:wwhmomo@gmail.com">邮箱：wwhmomo@gmail.com</a></p>
       <br />
       <h3>友链</h3>
@@ -76,6 +83,7 @@ const About = () => {
         <FriendLink info={blackdragon} />
         <FriendLink info={alexanderinhust} />
         <FriendLink info={kylerky} />
+        <FriendLink info={faraway} />
         {/* <FriendLink info={nekoDrider} /> */}
       </div>
     </div>

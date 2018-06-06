@@ -16,6 +16,7 @@ const Map = () => {
   return (
     <div className={cls['right-page']} >
       <PageIntro pageInfo={MapIntro} />
+      <p>还未上线，敬请期待</p>
       {/* <div dangerouslySetInnerHTML={{ _html: MapSrc }} /> */}
     </div>
   )

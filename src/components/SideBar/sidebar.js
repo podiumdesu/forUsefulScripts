@@ -28,8 +28,8 @@ class SideBar extends Component {
   render() {
     const { isTitle, id, isHide } = this.props
     const svgMap = {
-      1: mapSvg,
-      2: calenderSvg,
+      1: calenderSvg,
+      2: mapSvg,
       3: aboutSvg,
     }
     const text = this.state.text

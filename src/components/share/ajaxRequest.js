@@ -5,7 +5,11 @@ export default function (path, method, data) {
     // ajax.setRequestHeader(requestHeader.header, requestHeader.type)
     ajax.onreadystatechange = function () {
       if (this.readyState === 4) {
-        resolve(this.responseText)
+        if (JSON.parse(this.responseText).status === 200) {
+          resolve(this.responseText)
+        } else {
+          reject(this.responseText)
+        }
       }
     }
     ajax.send(data)

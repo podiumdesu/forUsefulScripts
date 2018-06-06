@@ -1,13 +1,24 @@
+@media (max-width: 767px)
+  .sidebar
+    margin: 1rem .5rem 0 1rem
+    height: 15%
+@media (min-width: 768px)
+  .sidebar
+    margin: 1rem 20px 0 20px 
+    height: 20%
+
+// @media (min-width: 768px)
 .sidebar
-  height: 20%
-  box-shadow: 1px 6px 12px #80BC43
-  // background-color: #2A7D7B#7DC95C#d27797#c85959#B5CA62#92DCC6
-  background-color: #99CA68
+
+  box-shadow: 1px 6px 12px #CA6895
+  // background-color: #2A7D7B#7DC95C#d27797#c85959#B5CA62#92DCC6#99CA68#CA6895
+  background-color: #E6B2CA
   position: relative
   display: flex
   justify-content: center
   align-items: center
   padding: 0 1rem
+  border-radius: 20px
   p
     margin: 0
     width: 75%
@@ -17,15 +28,16 @@
     transition: all linear 2s
     display: inline-block
 
-@media (max-width: 1200px)
+@media (max-width: 1500px)
   .sidebar
     p
       display: none
+      
 .oddSideBar
-  box-shadow: 1px 6px 12px #80BC43
+  box-shadow: 1px 6px 12px #CA6895
   // #48C19C
-  // background-color: #309086#5ac873#d58295#d16c6c#C7D887#6DCFB1
-  background-color: #B3D88D
+  // background-color: #309086#5ac873#d58295#d16c6c#C7D887#6DCFB1#B3D88D
+  background-color: #D88DB0
   p
     color: white
 

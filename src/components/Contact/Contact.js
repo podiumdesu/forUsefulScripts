@@ -11,7 +11,6 @@ const contactIntro = {
   pageImg: contactImg,
 }
 
-
 class Contact extends React.Component {
   constructor(props) {
     super(props)
@@ -23,7 +22,7 @@ class Contact extends React.Component {
       resultFileName: '',
       processState: false,
       formData: '',
-      upLoadState: false,
+      // upLoadState: false,
     }
   }
   clickToDownloadFile() {
@@ -39,12 +38,15 @@ class Contact extends React.Component {
             resultFileName: JSON.parse(resultFileFromServer).result,
             processState: true,
           })
-          this.resolveInfo.innerHTML = '处理成功，点击下载文件'
+          this.resolveInfo.innerHTML = '处理成功，点击下载文件，用手机打开即可保存至通讯录'
           this.clickToDownloadVCF.children[0].style.backgroundImage = 'linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)'
           this.clickToDownloadVCF.children[0].children[0].href = `http://localhost:8080/${this.state.resultFileName}`
           this.clickToDownloadVCF.children[0].children[0].download = 'result.vcf'
           console.log('gg')
           this.buttonInfo.innerHTML = '点击下载'
+        })
+        .catch((err) => {
+          console.log(JSON.parse(err).result)
         })
     }
   }
@@ -87,8 +89,11 @@ class Contact extends React.Component {
     return (
       <div className={joinClassNames(cls['right-page'], cls['contact-page'])}>
         <PageIntro pageInfo={contactIntro} />
-        <p>这里应该是一段很多很多的介绍嗷～</p>
+        <img style={{ width: '70%' }}src="http://ojvrmnpos.bkt.clouddn.com/show/calendertttt.png" alt="样例展示" />
         <p>请按照顺序填写表格</p>
+        <p>第一列填写【姓名】，第二列填写【手机号】</p>
+        <p>（选填）第三列填写【父亲手机号】，第四列填写【母亲手机号】</p>
+        <p>请上传csv文件，<a href="https://jingyan.baidu.com/article/925f8cb8a34a15c0dde056e6.html" target="_blank" >点击查看如何将xlsx一键保存成csv文件</a></p>
         <div ref={(c) => { this.dragOverContainer = c }} className={cls.dragFile} onDrop={this.dragFile} onDragOver={this.dragOver} onDragLeave={this.dragLeave}>
           <p>拖拽csv文件至此！</p>
         </div>
@@ -99,7 +104,7 @@ class Contact extends React.Component {
               是否保存父母联系方式
         </label>
         {/* </div> */}
-        <p ref={(c) => { this.resolveInfo = c }} />
+        <p ref={(c) => { this.resolveInfo = c }} className={cls.resolveInfo} />
         <div ref={(c) => { this.clickToDownloadVCF = c }} className={cls.clickToDownload} onClick={this.clickToDownloadFile}>
           <p><a style={{ padding: '10px', color: 'white' }} ref={(c) => { this.buttonInfo = c }}>点击处理</a></p>
         </div>
